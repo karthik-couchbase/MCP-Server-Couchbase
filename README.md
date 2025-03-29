@@ -5,11 +5,13 @@ A Model Context Protocol (MCP) server that enables LLMs to interact directly wit
 ## 🚀 Quick Start
 
 1. **Prerequisites**
+
    - Node.js 16 or higher
    - A running Couchbase instance on Capella
    - Claude Desktop application
 
 2. **Installation**
+
    ```bash
    # Clone the repository
    git clone https://github.com/Aniket310101/MCP-Server-Couchbase.git
@@ -20,6 +22,7 @@ A Model Context Protocol (MCP) server that enables LLMs to interact directly wit
    ```
 
 3. **Configuration**
+
    - Create a `.env` file in the root directory with your Couchbase credentials:
      ```env
      COUCHBASE_URL=your_couchbase_url
@@ -29,6 +32,7 @@ A Model Context Protocol (MCP) server that enables LLMs to interact directly wit
      ```
 
 4. **Build the Project**
+
    ```bash
    npm run build
    ```
@@ -44,7 +48,13 @@ A Model Context Protocol (MCP) server that enables LLMs to interact directly wit
      "mcpServers": {
        "couchbase": {
          "command": "node",
-         "args": ["path/to/MCP-Server-Couchbase/dist/index.js"]
+         "args": ["path/to/MCP-Server-Couchbase/dist/index.js"],
+         "env": {
+           "COUCHBASE_URL": "<COUCHBASE CONNECTION STRING>",
+           "COUCHBASE_BUCKET": "<BUCKET NAME>",
+           "COUCHBASE_USERNAME": "<COUCHBASE USERNAME>",
+           "COUCHBASE_PASSWORD": "<COUCHBASE PASSWORD>"
+         }
        }
      }
    }
@@ -57,19 +67,23 @@ A Model Context Protocol (MCP) server that enables LLMs to interact directly wit
 ## 📝 Available Tools
 
 ### Basic Operations
+
 - `query`: Execute N1QL queries
 - `listBuckets`: List available buckets
 
 ### Scope Management
+
 - `createScope`: Create a new scope in a bucket
 - `deleteScope`: Delete an existing scope
 - `listScopes`: List all scopes in a bucket
 
 ### Collection Management
+
 - `createCollection`: Create a new collection in a scope
 - `dropCollection`: Delete a collection from a scope
 
 ### Document Operations
+
 - `createDocument`: Create a new document
 - `getDocument`: Retrieve a document by ID
 - `updateDocument`: Update an existing document
@@ -77,6 +91,7 @@ A Model Context Protocol (MCP) server that enables LLMs to interact directly wit
 - `bulkCreateDocuments`: Create multiple documents at once
 
 ### Index Management
+
 - `createIndex`: Create a new index on specified fields
 - `createPrimaryIndex`: Create a primary index on a collection
 - `listIndexes`: List all indexes in a bucket
@@ -95,16 +110,19 @@ Each tool supports optional `collection` and `scope` parameters for targeting sp
 Here are some example interactions with Claude using the MCP server:
 
 1. List all buckets:
+
    ```
    Could you show me all available buckets in the database?
    ```
 
 2. Create a scope and collection:
+
    ```
    Create a new scope called "users" and a collection called "profiles" in it
    ```
 
 3. Query documents:
+
    ```
    Find all users who signed up in the last 30 days
    ```
@@ -116,4 +134,4 @@ Here are some example interactions with Claude using the MCP server:
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request. 
+Contributions are welcome! Please feel free to submit a Pull Request.

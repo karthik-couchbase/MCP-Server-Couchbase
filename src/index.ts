@@ -1,10 +1,10 @@
-import * as dotenv from 'dotenv';
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { connect, Cluster } from 'couchbase';
 import { registerTools } from './registry';
+require('dotenv').config();
+
 // Load environment variables
-dotenv.config();
 
 async function main() {
   const COUCHBASE_URL = process.env.COUCHBASE_URL;

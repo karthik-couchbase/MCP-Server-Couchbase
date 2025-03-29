@@ -13,10 +13,7 @@ export function registerCollectionTools(server: McpServer, cluster: Cluster, buc
     async ({ collectionName, scopeName }) => {
       try {
         const collectionManager = bucket.collections();
-        await collectionManager.createCollection({
-          name: collectionName,
-          scopeName: scopeName
-        });
+        await collectionManager.createCollection(collectionName, scopeName);
         return {
           content: [{ type: 'text', text: `Collection ${collectionName} created successfully in scope ${scopeName}` }],
           isError: false

@@ -9,7 +9,7 @@ export function registerDocumentTools(server: McpServer, cluster: Cluster, bucke
     'Create a new document in Couchbase',
     {
       id: z.string().describe('The ID of the document to create'),
-      content: z.object({}).describe('The content of the document to create'),
+      content: z.record(z.any()).describe('The content of the document to create'),
       collection: z.string().describe('The name of the collection to create the document in'),
       scope: z.string().describe('The name of the scope to create the document in'),
     },
@@ -62,7 +62,7 @@ export function registerDocumentTools(server: McpServer, cluster: Cluster, bucke
     'Update an existing document',
     {
       id: z.string().describe('The ID of the document to update'),
-      content: z.object({}).describe('The content of the document to update'),
+      content: z.record(z.any()).describe('The content of the document to update'),
       collection: z.string().describe('The name of the collection to update the document in'),
       scope: z.string().describe('The name of the scope to update the document in'),
     },
@@ -116,7 +116,7 @@ export function registerDocumentTools(server: McpServer, cluster: Cluster, bucke
     {
       documents: z.array(z.object({
         id: z.string(),
-        content: z.object({}),
+        content: z.record(z.any()),
       })),
       collection: z.string().describe('The name of the collection to create the documents in'),
       scope: z.string().describe('The name of the scope to create the documents in'),
