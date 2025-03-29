@@ -1,31 +1,33 @@
-import "dotenv/config";
+import * as dotenv from 'dotenv';
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { connect, Cluster } from 'couchbase';
 import { registerTools } from './registry';
-import { config } from 'dotenv';
-
 // Load environment variables
-config();
+dotenv.config();
 
 async function main() {
-  const url = process.env.COUCHBASE_URL;
-  const bucket = process.env.COUCHBASE_BUCKET;
-  const username = process.env.COUCHBASE_USERNAME;
-  const password = process.env.COUCHBASE_PASSWORD;
+  const COUCHBASE_URL = process.env.COUCHBASE_URL;
+  const BUCKET = process.env.COUCHBASE_BUCKET;
+  const USERNAME = process.env.COUCHBASE_USERNAME;
+  const PASSWORD = process.env.COUCHBASE_PASSWORD;
 
-  if (!url || !bucket || !username || !password) {
-    throw new Error('Missing required environment variables. Please check your .env file');
+  // console.log(JSON.stringify(process.env, null, 2))
+
+  if (!COUCHBASE_URL || !BUCKET || !USERNAME || !PASSWORD) {
+    console.error("Error: Missing Couchbase connection environment variables.");
+    console.error("Please set COUCHBASE_URL, COUCHBASE_BUCKET, COUCHBASE_USERNAME, and COUCHBASE_PASSWORD.");
+    process.exit(1);
   }
 
   // Connect to Couchbase
-  const cluster: Cluster = await connect(url, {
-    username,
-    password,
+  const cluster: Cluster = await connect(COUCHBASE_URL, {
+    username: USERNAME,
+    password: PASSWORD,
   });
 
   // Get the default bucket
-  const defaultBucket = cluster.bucket(bucket);
+  const defaultBucket = cluster.bucket(BUCKET);
 
   // Create MCP server instance
   const server = new McpServer({
