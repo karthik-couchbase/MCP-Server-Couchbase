@@ -1,18 +1,18 @@
 # 🗄️ Couchbase MCP Server for LLMs
 
-A Model Context Protocol (MCP) server that enables LLMs to interact directly with Couchbase databases. Query buckets, execute N1QL queries, and manage data seamlessly through natural language.
+A Model Context Protocol (MCP) server that enables LLMs to interact directly with Couchbase databases on Capella clusters. Query buckets, perform CRUD operations, execute N1QL queries, and manage data seamlessly through natural language.
 
 ## 🚀 Quick Start
 
 1. **Prerequisites**
    - Node.js 16 or higher
-   - A running Couchbase instance
+   - A running Couchbase instance on Capella
    - Claude Desktop application
 
 2. **Installation**
    ```bash
    # Clone the repository
-   git clone https://github.com/yourusername/MCP-Server-Couchbase.git
+   git clone https://github.com/Aniket310101/MCP-Server-Couchbase.git
    cd MCP-Server-Couchbase
 
    # Install dependencies

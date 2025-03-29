@@ -9,13 +9,6 @@ import { config } from 'dotenv';
 config();
 
 async function main() {
-
-  const env = {
-    "COUCHBASE_URL": "couchbases://cb.nn723hj-11yxopb.cloud.couchbase.com",
-    "COUCHBASE_BUCKET": "travel-sample",
-    "COUCHBASE_USERNAME": "Admin",
-    "COUCHBASE_PASSWORD": "Admin@123"
-  }
   const url = process.env.COUCHBASE_URL;
   const bucket = process.env.COUCHBASE_BUCKET;
   const username = process.env.COUCHBASE_USERNAME;
