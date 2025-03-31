@@ -1,6 +1,6 @@
 {
   "name": "@couchbasedatabase/couchbase-mcp",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "A Couchbase MCP server for LLMs",
   "main": "dist/index.js",
   "scripts": {
@@ -13,6 +13,9 @@
     "couchbase",
     "llm"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "author": "aniket-purkayastha",
   "license": "MIT",
   "dependencies": {
