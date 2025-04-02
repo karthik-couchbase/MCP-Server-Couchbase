@@ -9,8 +9,12 @@ console.log('CONFIG: ', configFile)
 if (configFile) {
   try {
     const config = JSON.parse(fs.readFileSync(configFile, "utf8"));
-    for (const [key, value] of Object.entries(config)) {
-      process.env[`${key.toUpperCase()}`] = (value as any).toString();
+    
+    // Handle nested configuration structure
+    for (const [serverType, serverConfigs] of Object.entries(config.mcpServers)) {
+      for (const [key, value] of Object.entries((serverConfigs as any).env)) {
+        process.env[key] = value as string;
+      }
     }
   } catch (error: any) {
     console.error(`Error reading config file: ${error.message}`);
