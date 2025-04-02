@@ -5,6 +5,7 @@ const fs = require("fs");
 
 // Check for config file
 const configFile = process.argv[2];
+console.log('CONFIG: ', configFile)
 if (configFile) {
   try {
     const config = JSON.parse(fs.readFileSync(configFile, "utf8"));
@@ -18,4 +19,4 @@ if (configFile) {
 }
 
 // Run the server
-require("../src/index.js");
+require("../index.js");
