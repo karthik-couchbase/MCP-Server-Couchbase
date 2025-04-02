@@ -12,6 +12,20 @@ A Model Context Protocol (MCP) server that enables LLMs to interact directly wit
 
 2. **Installation**
 
+   Couchbase MCP Server can be installed in two ways:
+
+   ### Option 1: Using NPX (Recommended)
+
+   The quickest way to get started is using NPX:
+
+   ```bash
+   npx -y @couchbasedatabase/couchbase-mcp
+   ```
+
+   ### Option 2: Manual Installation
+
+   If you prefer to clone and run the project manually:
+
    ```bash
    # Clone the repository
    git clone https://github.com/Aniket310101/MCP-Server-Couchbase.git
@@ -19,29 +33,37 @@ A Model Context Protocol (MCP) server that enables LLMs to interact directly wit
 
    # Install dependencies
    npm install
-   ```
 
-3. **Configuration**
-
-   - Create a `.env` file in the root directory with your Couchbase credentials:
-     ```env
-     COUCHBASE_URL=your_couchbase_url
-     COUCHBASE_USERNAME=your_username
-     COUCHBASE_PASSWORD=your_password
-     COUCHBASE_BUCKET=your_bucket_name
-     ```
-
-4. **Build the Project**
-
-   ```bash
+   # Build the project
    npm run build
    ```
 
-5. **Claude Desktop Integration**
+3. **Claude Desktop Integration**
    Add this configuration to your Claude Desktop config file:
 
    **Windows**: `%APPDATA%/Claude/claude_desktop_config.json`  
    **MacOS**: `~/Library/Application Support/Claude/claude_desktop_config.json`
+
+   ### Option 1: With Package Installation
+
+   ```json
+   {
+     "mcpServers": {
+       "couchbase": {
+         "command": "npx",
+         "args": ["-y", "@couchbasedatabase/couchbase-mcp"],
+         "env": {
+           "COUCHBASE_URL": "<COUCHBASE CONNECTION STRING>",
+           "COUCHBASE_BUCKET": "<BUCKET NAME>",
+           "COUCHBASE_USERNAME": "<COUCHBASE USERNAME>",
+           "COUCHBASE_PASSWORD": "<COUCHBASE PASSWORD>"
+         }
+       }
+     }
+   }
+   ```
+
+   ### Option 2: With Manual Installation
 
    ```json
    {
@@ -60,7 +82,7 @@ A Model Context Protocol (MCP) server that enables LLMs to interact directly wit
    }
    ```
 
-6. **Verify Connection**
+4. **Verify Connection**
    - Restart Claude Desktop
    - The Couchbase MCP server tools should now be available in your conversations
 
