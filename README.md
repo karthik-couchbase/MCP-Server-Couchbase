@@ -30,7 +30,7 @@ A Model Context Protocol (MCP) server that enables LLMs to interact directly wit
 
    ```bash
    # Clone the repository
-   git clone https://github.com/Aniket310101/MCP-Server-Couchbase.git
+   git clone https://github.com/karthik-couchbase/MCP-Server-Couchbase.git
    cd MCP-Server-Couchbase
 
    # Install dependencies
